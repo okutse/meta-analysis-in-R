@@ -1,0 +1,93 @@
+## The Impact of Sleep Duration on the risk of breast cancer in women: A systematic review 
+## and meta-analysis of population-based cohort studies
+
+##Jomo Kenyatta University of Agriculture & Technology
+##Department of Statistics & Actuarial Sciences
+##Ochieng Amos Okutse
+
+########################################################
+##Additional File: The Meta-analysis####################
+########################################################
+##loading all the meta-analysis packages in R
+library(metafor)
+library(robumeta)
+library(meta)
+library(rmeta)
+metadata=read.csv("C:/Users/Amos Okutse/Desktop/sleep duration and risk of breast cancer/sleep_and_cancer.csv", header=TRUE)
+metadata
+View(metadata)
+
+##calculating the summary statistics/event probabilities for the experimental group
+summary(metadata$Ee/metadata$Ne)
+
+##calculating summary statistics/event probabilities for the control group
+summary(metadata$Ec/metadata$Nc)
+
+##calculating odds ratio and the standard error of the log odds
+
+metadata1=metabin(Ee,Ne,Ec,Nc, sm="OR", method="I", data=metadata, subset=study=="verkasalo et al.")
+metadata1
+##performing the meta analysis for all studies for short and long sleep duration data combined;
+
+metadata=metabin(Ee,Ne,Ec,Nc, sm="OR",method="I",data=metadata,subset=study==c("verkasalo et al.","vogtmann et al.","qian et al.",
+                                                                               "pinheiro et al.","kakizaki et al.","wu et al.",
+                                                                               "hurley et al.","gu et al.","verkasalo et al.,",
+                                                                               "vogtmann et al.,","qian et al.,","pinheiro et al.,",
+                                                                               "kakizaki et al.,","wu et al.,","hurley et al.,","gu et al.,"))
+metadata
+##plotting the forest plot of the studies in the meta analysis
+me=forest(metadata,subset=metadata$data.sleep_duration=="short",
+       xlab="Associations between long and short sleep durations with cancer")
+
+
+baujat(metadata)
+
+funnel(metadata)
+#########################################################################################################
+##conducting meta analysis for the effect of short sleep duration and the risk of breast cancer in women#
+#########################################################################################################
+metadata2=metabin(Ee,Ne,Ec,Nc, sm="OR",method="I",data=metadata,subset=study==c("verkasalo et al.","vogtmann et al.","qian et al.",
+                                                                               "pinheiro et al.","kakizaki et al.","wu et al.",
+                                                                               "hurley et al.","gu et al."))
+metadata2
+##forest plot for short sleep duration and the risk of breast cancer;
+forest(metadata2,xlab= "short sleep duration and the risk of breast cancer in women")
+
+##tool the assessment of studies contributing to the overall heterogeneity evaluation;
+baujat(metadata2, main="Baujat Plot for heterogeneity")
+
+##tool for assessment of probability of publication bias in study selection;
+funnel(metadata2)
+##funnel plot asymmetry test by Eggers Regression
+metabias(metadata2,method="linreg",plotit=TRUE,k.min=8)
+##there is funnel plot symmetry suggesting no publication biases in the included studies (p=0.7477)
+
+#################################################################################
+##long sleep duration and the risk of breast cancer in women from cohort studies#
+#################################################################################
+metadata3=metabin(Ee,Ne,Ec,Nc, sm="OR",method="I",data=metadata,subset=study==c("verkasalo et al.,",
+                                                                                "vogtmann et al.,","qian et al.,","pinheiro et al.,",
+                                                                                "kakizaki et al.,","wu et al.,","hurley et al.,","gu et al.,"))
+metadata3
+
+###forest plot summary of the effect of long sleep duration on the risk of breast cancer;
+forest(metadata3, xlab="Impact of long sleep duration on the risk of breast cancer in women")
+
+##assessment of study heterogeneity
+baujat(metadata3)
+
+##publication bias assessment;
+funnel(metadata3)
+
+##funnel plot asymmetry test by Eggers Regression
+metabias(metadata3,method="linreg",plotit=TRUE,k.min=8) ##the plotit=TRUE function plots the Eggers 
+#regression line on the radial plot of small study effect sizes.
+##there is funnel plot symmetry suggesting no publication biases in the included studies (p=0.07321)
+citation("meta") ##to obtain the citation for the package meta in R
+
+##The paper reports results of the forest plots based on both fixed and random effects models. 
+
+###########Plotting the 2 baujat plots together in 1 row and 2 columns.
+par(mfrow=c(1,2))
+baujat(metadata2,main="Figure 7a")
+baujat(metadata3,main="Figure 7b")
