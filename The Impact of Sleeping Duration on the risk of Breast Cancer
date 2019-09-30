@@ -35,7 +35,7 @@ metadata=metabin(Ee,Ne,Ec,Nc, sm="OR",method="I",data=metadata,subset=study==c("
                                                                                "vogtmann et al.,","qian et al.,","pinheiro et al.,",
                                                                                "kakizaki et al.,","wu et al.,","hurley et al.,","gu et al.,"))
 metadata
-##plotting the forest plot of the studies in the meta analysis
+##plotting the forest plot of the studies included in the meta analysis
 me=forest(metadata,subset=metadata$data.sleep_duration=="short",
        xlab="Associations between long and short sleep durations with cancer")
 
