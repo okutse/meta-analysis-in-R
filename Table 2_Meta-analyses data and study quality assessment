@@ -1,0 +1,21 @@
+Table 2: Meta-analyses data and study quality assessment
+Study ID#	study	Year	Ee	Ne	Ec	Nc	Sleep Duration	Study Type	Study Quality*
+1	Verkasalo et al.	2015	23	1181	188	9053	short	cohort	8
+2	Vogtmann et al.	2013	355	8686	2049	41970	short	cohort	8
+3	Qian et al.	2015	45	1634	631	16032	short	cohort	8
+4	Pinheiro et al.	2009	174	3553	1752	32041	short	cohort	6
+5	Kakizaki et al.	2008	42	4549	40	7087	short	cohort	8
+6	wu et al.	2008	179	11370	131	8835	short	cohort	8
+7	Hurley et al.	2015	1303	26440	3699	74211	short	cohort	6
+8	Gu et al.	2016	162	4441	3648	74200	short	cohort	7
+9	Verkasalo et al.,	2015	31	1988	188	9053	long	cohort	8
+10	Vogtmann et al.,	2013	235	4693	2049	41970	long	cohort	8
+11	Qian et al.,	2015	161	4104	631	16032	long	cohort	8
+12	pinheiro et al.,	2009	189	3657	1752	32041	long	cohort	6
+13	Kakizaki et al.,	2008	11	3692	40	7087	long	cohort	8
+14	wu et al.,	2008	29	2284	131	8835	long	cohort	8
+15	Hurley et al.,	2015	51	958	3699	74211	long	cohort	6
+16	Gu et al.,	2016	189	4194	3648	74200	long	cohort	7
+*study quality was assessed by the NOS Scale.
+#study ID 1 to 8 assess short sleep and breast cancer whereas study ID 8 to 16 assess the impact of long sleep duration on breast cancer.
+
